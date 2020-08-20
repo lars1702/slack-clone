@@ -1,13 +1,16 @@
+import App from "./App"
 import React from "react"
 import ReactDOM from "react-dom"
-import GlobalStyles from "./global-styles"
-import App from "./App"
+import Theme from "./styles/Theme"
 import * as serviceWorker from "./serviceWorker"
+import GlobalStyles from "./styles/global-styles"
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyles />
-    <App />
+    <Theme>
+      <App />
+    </Theme>
   </React.StrictMode>,
   document.getElementById("root")
 )
