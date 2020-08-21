@@ -3,7 +3,7 @@ import Header from "./Header"
 import { AppBody, AppContainer } from "./styles/App-styles"
 import Sidebar from "./Sidebar/Sidebar"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
-import Chat from "./Chat"
+import Chat from "./Chat/Chat"
 
 function App(): JSX.Element {
   return (
