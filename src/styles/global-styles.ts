@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  display: flex;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -14,9 +17,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root{
+  display: flex;
+  width: 100%;
 }
 `
 

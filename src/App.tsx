@@ -1,16 +1,26 @@
 import React from "react"
 import Header from "./Header"
-import { Body } from "./styles/App-styles"
+import { AppBody, AppContainer } from "./styles/App-styles"
 import Sidebar from "./Sidebar/Sidebar"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
+import Chat from "./Chat"
+
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <Header />
-      <Body>
-        <Sidebar />
-      </Body>
-      {/* React-router --> for specific channels */}
-    </div>
+    <BrowserRouter>
+      <AppContainer>
+        <Header />
+        <AppBody>
+          <Sidebar />
+          <Switch>
+            <Route path="/room/:roomId">
+              <Chat />
+            </Route>
+          </Switch>
+        </AppBody>
+        {/* React-router --> for specific channels */}
+      </AppContainer>
+    </BrowserRouter>
   )
 }
 

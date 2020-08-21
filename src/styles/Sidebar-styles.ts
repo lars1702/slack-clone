@@ -1,6 +1,7 @@
 import styled from "styled-components/macro"
 
 export const Sidebar = styled.div`
+  flex: 0.3;
   background-color: ${p => p.theme.slackColor};
   border-top: 1px solid ${p => p.theme.slackColorBorder};
   max-width: 260px;
