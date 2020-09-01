@@ -11,12 +11,16 @@ import { IMessage } from "../types"
 
 export const Message = ({ messageInfo }: { messageInfo: IMessage }) => {
   console.log("DEBUG - messageInfo:", messageInfo)
-  let date = ""
-  if (messageInfo?.timestamp)
-    date = new Date(messageInfo?.timestamp?.seconds * 1000)?.toLocaleTimeString?.([], {
+
+  const dateString = () => {
+    const timeOptions = {
       hour: "2-digit",
       minute: "2-digit",
-    })
+    }
+    if (messageInfo?.timestamp)
+      return new Date(messageInfo?.timestamp?.seconds * 1000)?.toLocaleTimeString?.([], timeOptions)
+    else return ""
+  }
 
   return (
     <MessageContainer>
@@ -24,7 +28,7 @@ export const Message = ({ messageInfo }: { messageInfo: IMessage }) => {
       <MessageInnerContainer>
         <MessageUser>
           {messageInfo.user}
-          <MessageTime>{date}</MessageTime>
+          <MessageTime>{dateString()}</MessageTime>
         </MessageUser>
         <MessageText>{messageInfo.message}</MessageText>
       </MessageInnerContainer>

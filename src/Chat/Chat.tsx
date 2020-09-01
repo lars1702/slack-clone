@@ -10,7 +10,7 @@ import {
   ChatHeaderLeft,
   ChatHeaderRight,
 } from "../styles/Chat-styles"
-import { IChannel, IMessage } from "../types"
+import { IChannel, IMessage, DocumentData } from "../types"
 import { Message } from "./Message"
 
 const Chat = () => {

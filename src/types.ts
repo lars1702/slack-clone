@@ -9,6 +9,15 @@ export interface IChannel {
   id?: string
 }
 
+export interface IChildren {
+  children: JSX.Element
+}
+
+export type UserType = {
+  name: string
+  image: string
+}
+
 interface ITimestamp {
   nanoseconds: number
   seconds: number
@@ -19,6 +28,8 @@ export interface IMessage {
   message?: string
   timestamp?: ITimestamp
 }
+
+export type DocumentSnapshot = firestoreTypes.DocumentSnapshot
 
 export type ChannelsType = IChannel[]
 

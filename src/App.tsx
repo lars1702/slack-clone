@@ -2,25 +2,33 @@ import React from "react"
 import Header from "./Header"
 import { AppBody, AppContainer } from "./styles/App-styles"
 import Sidebar from "./Sidebar/Sidebar"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Chat from "./Chat/Chat"
+import Login from "./Login/Login"
 
 function App(): JSX.Element {
+  const dummyUser = "DUMMYUSER"
+
   return (
-    <BrowserRouter>
-      <AppContainer>
-        <Header />
-        <AppBody>
-          <Sidebar />
-          <Switch>
-            <Route path="/room/:roomId">
-              <Chat />
-            </Route>
-          </Switch>
-        </AppBody>
-        {/* React-router --> for specific channels */}
-      </AppContainer>
-    </BrowserRouter>
+    <AppContainer>
+      <Router>
+        {!dummyUser ? (
+          <Login />
+        ) : (
+          <>
+            <Header />
+            <AppBody>
+              <Sidebar />
+              <Switch>
+                <Route path="/room/:roomId">
+                  <Chat />
+                </Route>
+              </Switch>
+            </AppBody>
+          </>
+        )}
+      </Router>
+    </AppContainer>
   )
 }
 
