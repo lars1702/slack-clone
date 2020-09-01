@@ -1,18 +1,28 @@
-import React from "react"
+import React, { useContext } from "react"
 import { LoginContainer, InnerContainer } from "./Login-styles"
 import SlackSVG from "./SlackSVG"
 import { Button } from "@material-ui/core"
 import { auth, provider } from "../firebase"
+import AppContext from "../State/StateProvider"
 
 function Login() {
+  const { dispatch } = useContext(AppContext)
   const loginWithGoogle = () => {
     auth
       .signInWithPopup(provider)
       .then(result => {
-        console.log("DEBUG - result:", result.user)
+        if (dispatch && result.user) {
+          const { displayName, photoURL, email } = result?.user
+          dispatch({
+            type: "SET_USER",
+            user: displayName,
+            photoURL,
+            email,
+          })
+        }
       })
       .catch(e => {
-        console.log("DEBUG - e:", e.message)
+        alert("could not log in " + e.message)
       })
   }
 

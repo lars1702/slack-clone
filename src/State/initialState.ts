@@ -1,7 +1,9 @@
 import { IState } from "./types"
 
 const initialState: IState = {
-  user: "dummy_user",
+  user: "",
+  photoURL: "",
+  email: "",
 }
 
 export default initialState

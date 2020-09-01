@@ -1,18 +1,19 @@
-import React from "react"
+import React, { useContext } from "react"
 import Header from "./Header"
 import { AppBody, AppContainer } from "./styles/App-styles"
 import Sidebar from "./Sidebar/Sidebar"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Chat from "./Chat/Chat"
 import Login from "./Login/Login"
+import AppContext from "./State/StateProvider"
 
 function App(): JSX.Element {
-  const dummyUser = "DUMMYUSER"
+  const { state } = useContext(AppContext)
 
   return (
     <AppContainer>
       <Router>
-        {!dummyUser ? (
+        {!state.user ? (
           <Login />
         ) : (
           <>
