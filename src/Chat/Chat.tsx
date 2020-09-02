@@ -35,8 +35,6 @@ const Chat = () => {
     }
   }, [roomId])
 
-  console.log("DEBUG - roomMessages:", roomMessages)
-  console.log("DEBUG - roomDetails:", roomDetails)
   return (
     <ChatContainer>
       <ChatHeader>
@@ -53,8 +51,8 @@ const Chat = () => {
         </ChatHeaderRight>
       </ChatHeader>
       <div>
-        {roomMessages.map(messageInfo => (
-          <Message messageInfo={messageInfo} />
+        {roomMessages.map((messageInfo, index) => (
+          <Message key={index} messageInfo={messageInfo} />
         ))}
       </div>
     </ChatContainer>

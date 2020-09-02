@@ -9,7 +9,6 @@ import AppContext from "./State/StateProvider"
 
 function App(): JSX.Element {
   const { state } = useContext(AppContext)
-
   return (
     <AppContainer>
       <Router>

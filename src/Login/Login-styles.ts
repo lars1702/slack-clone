@@ -1,10 +1,18 @@
 import styled from "styled-components/macro"
+import { Button } from "@material-ui/core"
 
 export const LoginContainer = styled.div`
   height: 100vh;
   background-color: #f8f8f8;
   display: grid;
   place-items: center;
+`
+
+export const LoginErrorMessage = styled.p`
+  color: red;
+  min-height: 10px;
+  font-size: 18px;
+  padding: 20px 0px 0px 0px;
 `
 
 export const InnerContainer = styled.div`
@@ -18,10 +26,21 @@ export const InnerContainer = styled.div`
     height: 100px;
     margin-bottom: 40px;
   }
-  & > button {
+`
+
+export const LoginButton = styled(Button)`
+  /* && trumps MUI's specificity without using !important */
+  && {
+    width: 200px;
     margin-top: 50px;
     text-transform: inherit;
     background-color: #0a8d48;
-    color: white;
+    color: whitesmoke;
+    font-size: 16px;
+    :hover {
+      color: rgb(51, 51, 51);
+      background-color: #13af5c;
+      transition: background-color 150ms, color 150ms;
+    }
   }
 `

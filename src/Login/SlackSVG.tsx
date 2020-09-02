@@ -1,6 +1,6 @@
 import React from "react"
 
-function SlackSVG() {
+function SlackSVG(): JSX.Element {
   return (
     <svg viewBox="0 0 2447.6 2452.5">
       <path
