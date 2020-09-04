@@ -2,6 +2,7 @@ import styled from "styled-components/macro"
 import { Avatar } from "@material-ui/core"
 
 export const AvatarStyled = styled(Avatar)``
+
 export const Header = styled.header`
   display: flex;
   align-items: center;

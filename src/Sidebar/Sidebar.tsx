@@ -11,10 +11,11 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord"
 import CreateIcon from "@material-ui/icons/Create"
 import db from "../firebase"
 import { ChannelsType } from "../types"
+import useAppContext from "../State/StateProvider"
 
 const Sidebar = () => {
   const [channels, setChannels] = useState<ChannelsType>([])
-
+  const { state } = useAppContext()
   useEffect(() => {
     //get channel data from firebase
     db.collection("rooms").onSnapshot(snapshot =>
@@ -34,7 +35,7 @@ const Sidebar = () => {
           <h2>Organization Name</h2>
           <h3>
             <FiberManualRecordIcon />
-            Lars Hansen
+            {state.user}
           </h3>
         </SidebarInfo>
         <CreateIcon />

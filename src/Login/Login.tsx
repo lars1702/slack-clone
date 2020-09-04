@@ -1,25 +1,18 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useState } from "react"
 import { LoginContainer, InnerContainer } from "./Login-styles"
 import SlackSVG from "./SlackSVG"
 import { auth, provider } from "../firebase"
-import AppContext from "../State/StateProvider"
+import useAppContext from "../State/StateProvider"
 import { LoginErrorMessage, LoginButton } from "./Login-styles"
 
 function Login(): JSX.Element {
-  const { dispatch } = useContext(AppContext)
+  const { dispatch } = useAppContext()
   const [message, setMessage] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
 
-  useEffect(() => {
-    let timeout = 0
-    if (message) timeout = setTimeout(() => setMessage(""), 5000)
-    return (): void => {
-      clearTimeout(timeout)
-    }
-  }, [message, setMessage])
-
   const loginWithGoogle = (): void => {
     if (dispatch) {
+      setMessage("")
       setLoading(true)
       auth
         .signInWithPopup(provider)

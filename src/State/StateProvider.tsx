@@ -1,10 +1,10 @@
-import React, { createContext, useReducer } from "react"
+import React, { createContext, useReducer, useContext } from "react"
 import reducer from "./reducer"
 import initialState from "./initialState"
 import { IChildren } from "../types"
 import { IState } from "./types"
 
-const AppContext = createContext<{ state: IState; dispatch?: React.Dispatch<any> }>({
+export const AppContext = createContext<{ state: IState; dispatch?: React.Dispatch<any> }>({
   state: initialState,
 })
 
@@ -14,4 +14,6 @@ export const AppProvider = ({ children }: IChildren) => {
   return <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>
 }
 
-export default AppContext
+const useAppContext = () => useContext(AppContext)
+
+export default useAppContext

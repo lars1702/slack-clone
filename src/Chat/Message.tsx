@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import {
   MessageContainer,
   MessageImage,
@@ -8,12 +8,12 @@ import {
   MessageInnerContainer,
 } from "../styles/Message-styles"
 import { IMessage } from "../types"
-import AppContext from "../State/StateProvider"
+import useAppContext from "../State/StateProvider"
 
-export const Message = ({ messageInfo }: { messageInfo: IMessage }) => {
-  const { state } = useContext(AppContext)
+export const Message = ({ messageInfo }: { messageInfo: IMessage }): JSX.Element => {
+  const { state } = useAppContext()
 
-  const dateString = () => {
+  const dateString = (): string => {
     const timeOptions = {
       hour: "2-digit",
       minute: "2-digit",
@@ -25,19 +25,14 @@ export const Message = ({ messageInfo }: { messageInfo: IMessage }) => {
 
   return (
     <MessageContainer>
-      <MessageImage src={messageInfo.userImage} alt={`${messageInfo.user} avatar`}></MessageImage>
+      <MessageImage src={state.photoURL} alt={`${state.user} avatar`}></MessageImage>
       <MessageInnerContainer>
         <MessageUser>
-          {messageInfo.user}
+          {state.user}
 
           <MessageTime>{dateString()}</MessageTime>
         </MessageUser>
-        <MessageText>
-          {state.user}
-          {state.email}
-          {state.photoURL}
-          {messageInfo.message}
-        </MessageText>
+        <MessageText>{messageInfo.message}</MessageText>
       </MessageInnerContainer>
     </MessageContainer>
   )

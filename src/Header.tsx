@@ -1,32 +1,27 @@
-import React from "react"
+import React, { useContext } from "react"
 import {
   Header as HeaderStyled,
   HeaderLeft,
   HeaderSearch,
   HeaderRight,
-  AvatarStyled,
+  AvatarStyled as Avatar,
 } from "./styles/Header-styles"
 import AccessTimeIcon from "@material-ui/icons/AccessTime"
 import SearchIcon from "@material-ui/icons/Search"
 import HelpOutline from "@material-ui/icons/HelpOutline"
+import useAppContext from "./State/StateProvider"
 
 interface IUser {
   displayName?: string
   photoURL?: string
 }
 
-interface IHeader {
-  user?: IUser
-}
-
-const Header = ({ user }: IHeader) => {
+const Header = () => {
+  const { state } = useAppContext()
   return (
     <HeaderStyled>
       <HeaderLeft>
-        <AvatarStyled
-          alt={user?.displayName || "Avatar image"}
-          src={user?.photoURL || ""}
-        />
+        <Avatar alt={state.user || "User image"} src={state.photoURL || ""} />
         <AccessTimeIcon />
       </HeaderLeft>
       <HeaderSearch>

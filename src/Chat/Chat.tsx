@@ -10,10 +10,11 @@ import {
   ChatHeaderLeft,
   ChatHeaderRight,
 } from "../styles/Chat-styles"
+import ChatInput from "./ChatInput"
 import { IChannel, IMessage } from "../types"
 import { Message } from "./Message"
 
-const Chat = () => {
+const Chat = (): JSX.Element => {
   const { roomId } = useParams()
   const [roomDetails, setRoomDetails] = useState<IChannel>({})
   const [roomMessages, setRoomMessages] = useState<IMessage[]>([])
@@ -55,6 +56,7 @@ const Chat = () => {
           <Message key={index} messageInfo={messageInfo} />
         ))}
       </div>
+      <ChatInput channelName={roomDetails?.name || "room"} channelId={roomId || "room1"} />
     </ChatContainer>
   )
 }
